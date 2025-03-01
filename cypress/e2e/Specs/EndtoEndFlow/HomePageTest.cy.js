@@ -2,6 +2,7 @@
 
 import { HomePage } from "../../../pageObjects/HomePage";
 import { LoginPage } from "../../../pageObjects/LoginPage";
+import { goToUrl } from "../../../support/utils";
 
 describe("HomePage Suite", function () {
   const loginPage = new LoginPage();
@@ -14,15 +15,13 @@ describe("HomePage Suite", function () {
     });
   });
   this.beforeEach(function () {
-    cy.visit("/loginpagePractise/");
+    cy.visit(goToUrl("login_url"));
     loginPage.doLogin(testData.login.username,testData.login.password,testData.login.userType)
   });
 
   it("verify HomePage navigation", function () {
-    const baseUrl = Cypress.config("baseUrl");
-    loginPage.verifyPage(
-      testData.productPage.shopName,
-      `${baseUrl}/angularpractice/shop`
+      loginPage.verifyPage(
+      testData.productPage.shopName,goToUrl("homepage_url")
     );
   });
 

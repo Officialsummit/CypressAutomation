@@ -2,6 +2,7 @@
 
 
 import { LoginPage } from "../../../pageObjects/LoginPage";
+import { goToUrl } from "../../../support/utils";
 
 
 describe("End to End Ecommerce Test", function () {
@@ -16,10 +17,9 @@ let testData;
   });
 
   it('Veridy login', function(){
-    const baseUrl = Cypress.config('baseUrl')
-    cy.visit('/loginpagePractise/');
+    cy.visit(goToUrl("login_url"));
     loginPage.doLogin(testData.login.username,testData.login.password,testData.login.userType)
-    loginPage.verifyPage(testData.productPage.shopName,`${baseUrl}/angularpractice/shop`)
+    loginPage.verifyPage(testData.productPage.shopName,goToUrl('homepage_url'))
        
 
   })
