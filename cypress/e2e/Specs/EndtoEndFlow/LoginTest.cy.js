@@ -1,11 +1,11 @@
-///<reference types="Cypress"/>
+///<reference types="cypress"/>
 
 
 import { LoginPage } from "../../../pageObjects/LoginPage";
 import { goToUrl } from "../../../support/utils";
 
 
-describe("End to End Ecommerce Test", function () {
+describe("Login Test", function () {
 const loginPage = new LoginPage();
 let testData;
   //load data
@@ -16,7 +16,7 @@ let testData;
  
   });
 
-  it('Veridy login', function(){
+  it('Verify User login', function(){
     cy.visit(goToUrl("login_url"));
     loginPage.doLogin(testData.login.username,testData.login.password,testData.login.userType)
     loginPage.verifyPage(testData.productPage.shopName,goToUrl('homepage_url'))

@@ -1,4 +1,4 @@
-///<reference types = "Cypress"/>
+///<reference types = "cypress"/>
 
 import { HomePage } from "../../../pageObjects/HomePage";
 import { LoginPage } from "../../../pageObjects/LoginPage";
@@ -14,7 +14,7 @@ describe("HomePage Suite", function () {
       testData = data;
     });
   });
-  this.beforeEach(function () {
+beforeEach(function () {
     cy.visit(goToUrl("login_url"));
     loginPage.doLogin(testData.login.username,testData.login.password,testData.login.userType)
   });
@@ -26,14 +26,43 @@ describe("HomePage Suite", function () {
   });
 
   it("Can Select Product and Add to Cart", function () {
-    homePage.addproductToCard(testData.productPage.productName,testData.productPage.addBtnName);
-    homePage.verifyCart(testData.productPage.productCountShouldBe)
+    homePage.addproductToCard(testData.productPage.productName.first,testData.productPage.addBtnName);
+    homePage.verifyCart("1")
     
     })
 it("can Checkout the added product from Cart",function(){
-    homePage.addproductToCard(testData.productPage.productName,testData.productPage.addBtnName);
-    
+    homePage.addproductToCard(testData.productPage.productName.first,testData.productPage.addBtnName);
+    homePage.addproductToCard(testData.productPage.productName.second,testData.productPage.addBtnName);
+    homePage.verifyCart("2")
+    homePage.clickCheckout();
+    homePage.verifyProductCheckoutPage(testData.checkoutPage.tableHeading)     
+     
+    })
+it("Verify the Total Price equal to sum of selected Poducts prices",function(){
+  homePage.addproductToCard(testData.productPage.productName.first,testData.productPage.addBtnName);
+  homePage.addproductToCard(testData.productPage.productName.second,testData.productPage.addBtnName);
+  homePage.verifyCart("2")
+  homePage.clickCheckout();
+  homePage.verifyProductCheckoutPage(testData.checkoutPage.tableHeading)
+  homePage.verifyProductPrices(testData.productPage.productName.first,testData.productPage.productName.second);
+  
 })
+
+it("Verify the Total Price equal to any number of products",function(){
+  homePage.addproductToCard(testData.productPage.productName.first,testData.productPage.addBtnName);
+  homePage.addproductToCard(testData.productPage.productName.second,testData.productPage.addBtnName);
+  homePage.addproductToCard(testData.productPage.productName.third,testData.productPage.addBtnName);
+  homePage.verifyCart("3")
+  homePage.clickCheckout();
+  homePage.verifyProductCheckoutPage(testData.checkoutPage.tableHeading)
+  homePage.verifyAnyProductsPrices([testData.productPage.productName.first,testData.productPage.productName.second,testData.productPage.productName.third]);
+
+
+})
+
+
+    
+
      
      
   });

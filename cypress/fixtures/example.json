@@ -1,15 +1,22 @@
 {
-  "login":{
-    "username":"rahulshettyacademy",
-    "password":"learning",
-    "userType":"Teacher"
+  "login": {
+    "username": "rahulshettyacademy",
+    "password": "learning",
+    "userType": "Teacher"
   },
-  "productPage":{
-    "shopName":"Shop Name",
-    "addBtnName":"Add",
-    "productName":"Samsung Note 8",
-    "productCountShouldBe":1,
-    "deliverLocation":"China",
-    "successMsg":"Your order will be delivered in next few weeks"
+  "productPage": {
+    "shopName": "Shop Name",
+    "addBtnName": "Add",
+    "productName": {
+      "first": "Samsung Note 8",
+      "second": "Blackberry",
+      "third":"iphone X"
+    },
+
+    "deliverLocation": "China",
+    "successMsg": "Your order will be delivered in next few weeks"
+  },
+  "checkoutPage":{
+    "tableHeading":"Price"
   }
 }
