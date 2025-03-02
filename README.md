@@ -1,8 +1,10 @@
 # Cypress Automation Framework 🚀
 
-👋 Welcome to the Cypress Automation Framework repository! This project is designed to help you get started with automated testing using Cypress. It covers both basic concepts and advanced implementation using the Page Object Model (POM) for end-to-end (E2E) testing.
+👋 Welcome to this Cypress Automation Framework repository! This project is designed for UI automation testing using Cypress. It covers both basic concepts and advanced E2E implementation using the Page Object Model (POM). It has also been configured with reporting and CI/CD pipeline feature"
 
 ---
+# Framework Mindmap
+![Framework Mindmap](frameworkMindmap\frameworkImage.png "Framework")
 
 ## 📂 Project Structure
 
@@ -20,10 +22,11 @@ The project is divided into two main sections:
 
 ## 🚀 Project Structure
 
+
 ```
 CypressAutomation
 ├─ cypress
-│  ├─ cypressBasics
+│  ├─ cypressBasics  --this is to referesh cypress basics concepts
 │  │  ├─ calender.cy.js
 │  │  ├─ checkboxes.cy.js
 │  │  ├─ childWindow.cy.js
@@ -36,7 +39,7 @@ CypressAutomation
 │  │  ├─ test.cy.js
 │  │  └─ webTables.cy.js
 │  ├─ downloads
-│  ├─ e2e # for E2E testing
+│  ├─ e2e --End to end testing
 │  │  └─ Specs
 │  │     └─ EndtoEndFlow
 │  │        ├─ HomePageTest.cy.js
@@ -46,22 +49,49 @@ CypressAutomation
 │  ├─ pageObjects
 │  │  ├─ HomePage.js
 │  │  └─ LoginPage.js
-│  └─ support
-│     ├─ commands.js
-│     └─ e2e.js
+│  ├─ reports
+│  │  └─ html
+│  │     ├─ assets
+│  │     │  ├─ app.css
+│  │     │  ├─ app.js
+│  │     │  ├─ app.js.LICENSE.txt
+│  │     │  ├─ MaterialIcons-Regular.woff
+│  │     │  ├─ MaterialIcons-Regular.woff2
+│  │     │  ├─ roboto-light-webfont.woff
+│  │     │  ├─ roboto-light-webfont.woff2
+│  │     │  ├─ roboto-medium-webfont.woff
+│  │     │  ├─ roboto-medium-webfont.woff2
+│  │     │  ├─ roboto-regular-webfont.woff
+│  │     │  └─ roboto-regular-webfont.woff2
+│  │     ├─ index.html
+│  │     └─ videos
+│  │        └─ LoginTest.cy.js.mp4
+│  ├─ support
+│  │  ├─ commands.js
+│  │  ├─ e2e.js
+│  │  └─ utils.js
+│  └─ videos
+│     └─ LoginTest.cy.js.mp4
 ├─ cypress.config.js
+├─ frameworkMindmap
+│  └─ frameworkImage.png
 ├─ package-lock.json
-└─ package.json
+├─ package.json
+└─ README.md
+
 ```
 
+## 📈 Reporting with MochaAwesome
+Cypress tests are integrated with the MochaAwesome reporter for generating visually appealing HTML reports. The reports include:
 
-## 🛠️ Prerequisites
+**Test case execution status (pass/fail)**
+**Duration**
+**Logs, Videos and Screenshots(only if test fails)**
+## 🛠️ Setup Reporting
+In cypress.config.js, the cypress-mochawesome-reporter is configured. Once your tests run, a beautiful HTML report will be available in the cypress/reports folder.
 
-Before you begin, ensure you have the following installed:
+## ⚙️ CI/CD Pipeline with GitHub Actions
+Lastly I have implemented a GitHub Actions pipeline for CI/CD which automates the testing process whenever you push code to your repository. This pipeline supports parallel test execution for quicker feedback on large test suites.
 
-- [Node.js](https://nodejs.org/) (v14 or higher recommended)
-- [npm](https://www.npmjs.com/) (comes bundled with Node.js)
-- [Cypress](https://www.cypress.io/) (installed as a dev dependency in the project)
-
----
-
+Parallel test execution reduces testing time by running tests on multiple machines concurrently.
+Test reports are automatically generated and made available for each test run.
