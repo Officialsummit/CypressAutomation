@@ -4,7 +4,7 @@
 
 ---
 # Framework Mindmap
-![Framework Mindmap](frameworkMindmap\frameworkImage.png "Framework")
+![Framework Mindmap](frameworkMindmap/frameworkImage.png "Framework")
 
 ## 📂 Project Structure
 
