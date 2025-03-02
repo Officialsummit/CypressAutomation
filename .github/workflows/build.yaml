@@ -1,5 +1,7 @@
 name: End-to-end Regression tests
-on: push
+on: 
+  schedule:
+    - cron: '50 8 * * 1' 
 jobs:
   End-to-End-run:
     runs-on: ubuntu-24.04
